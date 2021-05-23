@@ -1,21 +1,23 @@
 import numpy as np
 import cv2
 
-cap = cv2.VideoCapture(0)
+capture = cv2.VideoCapture(0)
 
-while(True):
+while True:
     # Capture frame-by-frame
-    ret, frame = cap.read()
+    ret, frame = capture.read()
 
-    # Our operations on the frame come here
+    # Make grayscale video
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-   
+
     # Display the resulting frame
-    cv2.imshow('frame',frame)
-    cv2.imshow('gray',gray)
-    if cv2.waitKey(20) & 0xFF == ord('q'):
+    cv2.imshow("frame", frame)
+    cv2.imshow("gray", gray)
+    
+    # press Q to close
+    if cv2.waitKey(20) & 0xFF == ord("q"):
         break
 
 # When everything done, release the capture
-cap.release()
+capture.release()
 cv2.destroyAllWindows()
